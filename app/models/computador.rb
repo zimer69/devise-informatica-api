@@ -1,0 +1,2 @@
+class Computador < ApplicationRecord
+end
