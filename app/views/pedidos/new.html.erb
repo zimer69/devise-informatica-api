@@ -1,0 +1,18 @@
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class='m-5 col-12 col-lg-6 new-form' >
+      <h1 class='text-center'>Novo pedido</h1>
+      <%= simple_form_for @pedido, html: { autocomplete: "off", spellcheck: "false" } do |f| %>
+        <%= f.input :processador, :collection => ["Core i5", "Core i7", "Ryzen 5", "Ryzen 7"] %>
+        <%= f.input :placa_mae,:label => "Placa-mãe", :collection => ['Asus ROG', 'Gigabyte Aorus', 'ASRock Steel Legend'] %>
+        <%= f.input :memoria_ram, :label => "Kingston Hiper X (GB)", :collection => [4, 8, 16, 32, 64] %>
+        <%= f.input :memoria_ram_2, :label => "Kingston Hiper X (GB)", :collection => [4, 8, 16, 32, 64] %>
+        <%= f.input :memoria_ram_3, :label => "Kingston Hiper X (GB)", :collection => [4, 8, 16, 32, 64] %>
+        <%= f.input :memoria_ram_4, :label => "Kingston Hiper X (GB)", :collection => [4, 8, 16, 32, 64] %>
+        <%= f.input :placa_de_video,:label => "Placa de Vídeo", :collection => ['Evga Geforce RTX 2060 6GB',
+                                                    'Asus ROG Strix Geforce RTX 3060 6G',
+                                                    'Gigabyte Radeon RX 6600 XT EAGLE 8GB'] %>
+        <%= f.button :submit, 'Enviar', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

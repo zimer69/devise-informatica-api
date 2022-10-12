@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_07_213938) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_234358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,24 +29,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_213938) do
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
-  create_table "computadors", force: :cascade do |t|
-    t.string "processador"
-    t.string "placa_mae"
-    t.string "memoria_ram"
-    t.string "placa_de_video"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "memoria_ram_2"
-    t.string "memoria_ram_3"
-    t.string "memoria_ram_4"
+  create_table "jwt_denylist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "exp", null: false
+    t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
   create_table "pedidos", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "computador_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["computador_id"], name: "index_pedidos_on_computador_id"
+    t.string "processador"
+    t.string "placa_mae"
+    t.integer "memoria_ram"
+    t.integer "memoria_ram_2"
+    t.integer "memoria_ram_3"
+    t.integer "memoria_ram_4"
+    t.string "placa_de_video"
     t.index ["user_id"], name: "index_pedidos_on_user_id"
   end
 
@@ -60,11 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_213938) do
     t.datetime "updated_at", null: false
     t.string "nome"
     t.boolean "admin"
+    t.string "jti", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
-  add_foreign_key "pedidos", "computadors"
   add_foreign_key "pedidos", "users"
 end

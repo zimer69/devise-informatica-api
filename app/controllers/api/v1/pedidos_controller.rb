@@ -7,4 +7,8 @@ class Api::V1::PedidosController < Api::V1::BaseController
     @pedido = Pedido.find(params[:id])
     authorize @pedido
   end
+
+  def create
+
+  end
 end

@@ -1,12 +1,25 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.navbar {
   background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-link {
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 10px 0 10px;
+}
+
+#titulo {
+  margin-right: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
 }
